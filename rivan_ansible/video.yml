@@ -1,0 +1,31 @@
+#_5_VIDEO CALLS
+#CHANGE THE UNDERSCORE _ TO YOUR MONITOR NUMBER.
+---
+
+#- name: CUCM-_
+  #hosts: cucm
+  #gather_facts: false
+  #connection: local
+  #tasks:
+    - name: VIDEO
+      telnet:
+        user: admin
+        password: pass
+        login_prompt: "Username: "
+        prompts:
+          - '[>|#]'
+        command:
+          - terminal length 0
+          - enable
+          - config t
+          - ephone 1
+          - video
+          - voice service voip
+          - h323
+          - call start slow  
+          - ephone 2
+          - video
+          - voice service voip
+          - h323
+          - call start slow
+          - end
